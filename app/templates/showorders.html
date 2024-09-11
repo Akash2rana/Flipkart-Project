@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Flipkart | Your Orders{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Order ID</th>
+                    <th>Product Name</th>
+                    <th>Product Quantity</th>
+                    <th>Total Amount</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in orderdata %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ x.orderid }}</td>
+                    <td>{{ x.productid.productname }}</td>
+                    <td>{{ x.qty }}</td>
+                    <td>{{ x.totalamount }}</td>
+                    <td>
+                        <img src="{{ x.productid.images.url }}" alt="{{ x.productid.productname }}" height="150px" width="160px">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
